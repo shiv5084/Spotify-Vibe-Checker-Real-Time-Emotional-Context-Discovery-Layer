@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: vibe-checker-backend
+    env: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: APP_ENV
+        value: production
+      - key: FRONTEND_URL
+        sync: true
+      - key: GROQ_API_KEY
+        sync: true
+      - key: QDRANT_URL
+        sync: true
+      - key: QDRANT_API_KEY
+        sync: true
+      - key: SUPABASE_URL
+        sync: true
+      - key: SUPABASE_ANON_KEY
+        sync: true
+      - key: SUPABASE_SERVICE_KEY
+        sync: true
+      - key: REDIS_URL
+        sync: true
